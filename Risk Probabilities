@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>JavaScript Variables</h1>
+
+<p id="demo"></p>
+
+<script>
+var attLoseCount = 0;
+var defLoseCount = 0;
+var oneEachCount = 0;
+
+function compareDice(att, def) {
+    if (att[0] <= def[0] && att[1] <= def[1]) {
+    return "Attacker loses two.";
+    } else if (att[0] > def[0] && att[1] > def[1]) {
+    return "Defender loses two.";
+    } else {
+    return "One each.";
+    }
+}
+
+for (i = 1; i < 7; i++) {
+    for (j = 1; j < 7; j++) {
+        for (k = 1; k < 7; k++) {
+            for (l = 1; l < 7; l++) {
+                for (m = 1; m < 7; m++) {
+                    var d1 = i;
+                    var d2 = j;
+                    var d3 = k;
+                    var d4 = l;
+                    var d5 = m;
+                    var attDice = [d1, d2, d3].sort().reverse();
+                    var defDice = [d4, d5].sort().reverse();
+                    if (compareDice(attDice, defDice) == "Attacker loses two.") {
+                    attLoseCount++;
+                    } else if (compareDice(attDice, defDice) == "Defender loses two.") {
+                    defLoseCount++;
+                    } else {
+                    oneEachCount++;
+                    }
+                    }}}}}
+                    
+var outcomeArray = [attLoseCount, defLoseCount, oneEachCount];
+
+var percentageArray = [100*attLoseCount/7776, 100*defLoseCount/7776, 100*oneEachCount/7776];
+
+document.getElementById("demo").innerHTML = "The chance of the attacker losing two is " + percentageArray[0] + "%." + "<br>" + "The chance of the defender losing two is " + percentageArray[1] + "%." + "<br>" + "The chance of losing one each is " + percentageArray[2] + "%." + "<br>";
+</script>
+
+</body>
+</html>
